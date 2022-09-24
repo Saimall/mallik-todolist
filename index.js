@@ -20,17 +20,9 @@ const todoList = () => {
   }
 
   const toDisplayableList = (list) => {
-      let res= list.map(item=>`${item.completed ? '[x] ':'[ ] '}${item.title} ${item.dueDate===today ? " ":item.dueDate}`)
-      let str = res.toString();
-      const str1=str.split(",")
-      let res1=str1[0]
-     let res2=str1[1]
-     let ref=res1+"\n"+res2
-     return ref
-    
-      
+     let res= list.map(item=>`${item.completed ? '[x] ':'[ ] '}${item.title} ${item.dueDate===today ? " ":item.dueDate}`).join("\n")
+        return res;
   }
-
   return { all, add, markAsComplete, overdue, dueToday, dueLater, toDisplayableList };
 }
 
@@ -64,17 +56,17 @@ console.log("My Todo-list\n\n")
 console.log("Overdue")
 var overdues = todos.overdue()
 var formattedOverdues = todos.toDisplayableList(overdues)
-console.log(formattedOverdues)
+console.log(formattedOverdues);
 console.log("\n\n")
 
 console.log("Due Today")
 let itemsDueToday = todos.dueToday()
 let formattedItemsDueToday = todos.toDisplayableList(itemsDueToday)
-console.log(formattedItemsDueToday)
+console.log(formattedItemsDueToday);
 console.log("\n\n")
 
 console.log("Due Later")
 let itemsDueLater = todos.dueLater()
 let formattedItemsDueLater = todos.toDisplayableList(itemsDueLater)
-console.log(formattedItemsDueLater)
+console.log(formattedItemsDueLater);
 console.log("\n\n")
